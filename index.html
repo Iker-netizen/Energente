@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto EnerGente - ODS 7</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fdfefe;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #e67e22;
+      color: white;
+      text-align: center;
+      padding: 30px 10px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    header p {
+      margin-top: 8px;
+      font-size: 16px;
+      color: #fad7a0;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 0 15px;
+    }
+
+    .seccion-contenido {
+      background-color: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #d35400;
+      border-bottom: 2px solid #f39c12;
+      padding-bottom: 5px;
+    }
+
+    p {
+      line-height: 1.6;
+      font-size: 17px;
+    }
+
+    .caja-multimedia {
+      background-color: #fef5e7;
+      border: 2px dashed #f39c12;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    footer {
+      background-color: #d35400;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      margin-top: 30px;
+    }
+
+    .bg-subtle-primary { background-color: #fef5e7 !important; }
+    .bg-subtle-success { background-color: #fae5d3 !important; }
+    .bg-subtle-warning { background-color: #fdebd0 !important; }
+    .fg-emphasis-secondary { color: #566573; }
+
+    .accordion-item {
+      border: 1px solid #f39c12;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      padding: 10px;
+      background: #fff;
+    }
+    .accordion-header {
+      cursor: pointer;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #d35400;
+    }
+    .accordion-icon {
+      width: 1rem;
+      height: 1rem;
+      transition: transform 0.2s ease;
+    }
+    details[open] .accordion-icon {
+      transform: rotate(180deg);
+    }
+    .accordion-body {
+      margin-top: 10px;
+      color: #333;
+    }
+
+
+    .card {
+      border: 1px solid #f39c12;
+      border-radius: 8px;
+      background: #fff;
+      margin: 0 auto;
+    }
+    .btn-solid {
+      display: inline-block;
+      font-weight: 400;
+      text-align: center;
+      vertical-align: middle;
+      user-select: none;
+      padding: 0.375rem 0.75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      border-radius: 0.375rem;
+      text-decoration: none;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+    }
+    .theme-primary {
+      color: #fff;
+      background-color: #e67e22;
+      border-color: #e67e22;
+    }
+    .theme-primary:hover {
+      color: #fff;
+      background-color: #d35400;
+      border-color: #d35400;
+    }
+    .theme-success {
+      color: #fff;
+      background-color: #27ae60;
+      border-color: #27ae60;
+    }
+    .theme-inverse {
+      color: #fff;
+      background-color: #2c3e50;
+      border-color: #2c3e50;
+    }
+    .btn-icon {
+      background: none;
+      border: 1px solid #bdc3c7;
+      border-radius: 50%;
+      width: 2.5rem;
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .carousel-icon-prev::before { content: "‹"; font-size: 20px; color: #d35400; }
+    .carousel-icon-next::before { content: "›"; font-size: 20px; color: #d35400; }
+
+    /* Estilos integrados para el formulario de contacto */
+    .form-contacto-caja {
+      background-color: #fef5e7;
+      border: 1px solid #f39c12;
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .form-contacto-caja .form-label {
+      color: #d35400;
+      font-weight: bold;
+    }
+    .form-contacto-caja .form-control:focus,
+    .form-contacto-caja .form-select:focus {
+      border-color: #e67e22;
+      box-shadow: 0 0 0 0.2rem rgba(230, 126, 34, 0.25);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Empresa: EnerGente</h1>
+    <p>Agenda 2030 de la ONU (ODS 7)</p>
+  </header>
+
+  <nav class="navbar bg-body-tertiary shadow-sm">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="#" style="color: #d35400;">EnerGente ODS 7</a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel" style="color: #d35400;">Menú del Proyecto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div class="nav nav-pills flex-column gap-2" role="tablist">
+            <button class="nav-link active text-start" id="tab-seccion1" data-bs-toggle="pill" data-bs-target="#seccion1" type="button" role="tab" aria-controls="seccion1" aria-selected="true" data-bs-dismiss="offcanvas">1. Portada e Introducción</button>
+            <button class="nav-link text-start" id="tab-seccion2" data-bs-toggle="pill" data-bs-target="#seccion2" type="button" role="tab" aria-controls="seccion2" aria-selected="false" data-bs-dismiss="offcanvas">2. Componentes y Logística</button>
+            <button class="nav-link text-start" id="tab-seccion3" data-bs-toggle="pill" data-bs-target="#seccion3" type="button" role="tab" aria-controls="seccion3" aria-selected="false" data-bs-dismiss="offcanvas">3. Análisis FODA</button>
+            <button class="nav-link text-start" id="tab-seccion4" data-bs-toggle="pill" data-bs-target="#seccion4" type="button" role="tab" aria-controls="seccion4" aria-selected="false" data-bs-dismiss="offcanvas">4. Equipo de Trabajo</button>
+            <button class="nav-link text-start" id="tab-seccion5" data-bs-toggle="pill" data-bs-target="#seccion5" type="button" role="tab" aria-controls="seccion5" aria-selected="false" data-bs-dismiss="offcanvas">5. Contacto</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="tab-content">
+
+    <div id="seccion1" class="seccion-contenido tab-pane fade show active" role="tabpanel" aria-labelledby="tab-seccion1">
+      <h2>1. Portada e Introducción ODS 7</h2>
+      
+      <div class="caja-multimedia">
+        <img src="ONU.webp" alt="Objetivos de Desarrollo Sostenible ONU" class="img-fluid rounded">
+      </div>
+
+      <p>
+        El proyecto <strong>EnerGente</strong> surge como una respuesta directa a los desafíos de acceso energético en comunidades rurales y vulnerables de México, alineándose plenamente con el <strong>Objetivo de Desarrollo Sostenible 7 (ODS 7)</strong> de la Agenda 2030 de la ONU: Garantizar el acceso a una energía asequible, segura, sostenible y moderna para todos.
+      </p>
+
+      <div class="caja-multimedia">
+        <img src="Familia_enerkit.jpg" alt="Familia beneficiada por EnerGente" class="img-fluid rounded">
+      </div>
+
+      <p>
+        Mediante el diseño de sistemas solares portátiles y modulares, buscamos iluminar hogares que carecen de electricidad convencional, mejorando la calidad de vida, la educación nocturna y la seguridad familiar sin contaminar el medio ambiente.
+      </p>
+
+      <div class="my-4">
+        <div id="carouselExampleContent" class="carousel slide">
+          <div class="carousel-inner rounded-5">
+            <div class="carousel-item active">
+              <div class="d-flex flex-column justify-content-center bg-subtle-primary p-5 bg-1 rounded-5" style="min-height: 280px;">
+                <h3 style="color: #d35400;">Energía para todos</h3>
+                <p class="fg-emphasis-secondary mb-3">Garantizamos electricidad limpia y accesible en comunidades rurales de México.</p>
+                <div><a class="btn-solid theme-primary" href="#">Ver Misión</a></div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="d-flex flex-column justify-content-center text-center bg-subtle-success p-5 bg-2 rounded-5" style="min-height: 280px;">
+                <h3 style="color: #27ae60;">Desarrollo Sostenible</h3>
+                <p class="fg-emphasis-secondary mb-3">Impulsamos el ODS 7 de la ONU mediante tecnología solar modular y eficiente.</p>
+                <div><a class="btn-solid theme-success" href="#">Conocer más</a></div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="d-flex flex-column justify-content-center text-end bg-subtle-warning p-5 bg-3 rounded-5" style="min-height: 280px;">
+                <h3 style="color: #2c3e50;">Comunidad e Impacto</h3>
+                <p class="fg-emphasis-secondary mb-3">Integramos kits solares accesibles para transformar vidas y educación.</p>
+                <div><a class="btn-solid theme-inverse" href="#">Explorar</a></div>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center gap-2 mt-3">
+            <button class="btn-icon btn-sm" type="button" data-bs-target="#carouselExampleContent" data-bs-slide="prev" style="--bs-carousel-control-icon-width: 1rem;">
+              <span class="carousel-icon-prev" aria-hidden="true"></span>
+              <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="btn-icon btn-sm" type="button" data-bs-target="#carouselExampleContent" data-bs-slide="next" style="--bs-carousel-control-icon-width: 1rem;">
+              <span class="carousel-icon-next" aria-hidden="true"></span>
+              <span class="visually-hidden">Siguiente</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="seccion2" class="seccion-contenido tab-pane fade" role="tabpanel" aria-labelledby="tab-seccion2">
+      <h2>2. Componentes y Logística</h2>
+
+      <div class="caja-multimedia">
+        <img src="piezas_enerkit.jpg" alt="Piezas del kit EnerGente Básico" class="img-fluid rounded">
+      </div>
+
+      <p>
+        El sistema <strong>EnerKit Básico</strong> está compuesto por elementos modulares de alta durabilidad: un panel solar de 50W, batería de litio recargable, focos LED de alta eficiencia y conexiones seguras.
+      </p>
+
+      <div class="caja-multimedia">
+        <img src="piezas_enerkit_avanzado.jpg" alt="Componentes avanzados de EnerGente" class="img-fluid rounded">
+      </div>
+
+      <p>
+        La logística de producción modular permite ensamblar y distribuir los kits de forma rápida, facilitando su mantenimiento y garantizando un suministro continuo de energía.
+      </p>
+
+      <div class="caja-multimedia">
+        <img src="pieza_enerkit_instalado.jpg" alt="EnerKit instalado en campo" class="img-fluid rounded">
+      </div>
+
+      <p>
+        Aquí podemos observar el sistema instalado en campo, proporcionando iluminación estable y recarga de dispositivos móviles durante la noche.
+      </p>
+
+      <div class="accordion my-4">
+        <details class="accordion-item" name="accordionExample" open>
+          <summary class="accordion-header">
+            Panel Solar 50W
+            <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+          </summary>
+          <div class="accordion-body">
+            <strong>Captación eficiente de energía solar.</strong> Diseñado con soporte ajustable para capturar la máxima radiación solar durante todo el día, incluso en temporadas nubladas.
+          </div>
+        </details>
+        <details class="accordion-item" name="accordionExample">
+          <summary class="accordion-header">
+            Batería de Litio y Inversor
+            <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+          </summary>
+          <div class="accordion-body">
+            <strong>Almacenamiento seguro.</strong> Cuenta con puertos USB múltiples y protección contra sobrecargas para alimentar iluminación y pequeños dispositivos de forma confiable.
+          </div>
+        </details>
+        <details class="accordion-item" name="accordionExample">
+          <summary class="accordion-header">
+            Subsidy System (EnerKit Plus)
+            <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+          </summary>
+          <div class="accordion-body">
+            <strong>Modelo financiero solidario.</strong> A través de subsidios cruzados, la venta de EnerKit Plus en zonas urbanas ayuda a financiar y abaratar el costo del EnerKit Básico para comunidades rurales.
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <div id="seccion3" class="seccion-contenido tab-pane fade" role="tabpanel" aria-labelledby="tab-seccion3">
+      <h2>3. Análisis FODA del Proyecto</h2>
+
+      <div class="caja-multimedia">
+        <img src="diagrama_foda.png" alt="Matriz de Análisis FODA de EnerGente" class="img-fluid rounded">
+      </div>
+
+      <p>
+        El análisis FODA detalla las fortalezas, oportunidades, debilidades y amenazas evaluadas para asegurar el éxito y la viabilidad del proyecto EnerGente a largo plazo.
+      </p>
+
+      <div class="my-4 d-flex justify-content-center">
+        <section class="card p-3" style="max-width: 340px;">
+          <div class="card-body">
+            <h4 class="card-title" style="color: #d35400;">Resumen FODA</h4>
+            <p class="card-text">Nuestra mayor fortaleza es el sistema modular Plug & Play, alineado con las oportunidades del ODS 7 de la ONU.</p>
+            <a href="#" class="btn-solid theme-primary">Ver Matriz Completa</a>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div id="seccion4" class="seccion-contenido tab-pane fade" role="tabpanel" aria-labelledby="tab-seccion4">
+      <h2>4. Equipo de Trabajo</h2>
+
+      <p class="mb-4">
+        Integrantes del equipo de trabajo, roles asignados y tareas específicas en el proyecto EnerGente:
+      </p>
+
+      <div class="row g-4">
+
+        <div class="col-md-6">
+          <div class="p-4 border rounded bg-light shadow-sm h-100">
+            <span class="badge bg-warning text-dark mb-2">N.L. 7</span>
+            <h5 style="color: #d35400;" class="fw-bold">Iker Santiago Cruz Uribe</h5>
+            <p class="text-secondary fw-semibold mb-2">Director General (CEO)</p>
+            <p class="small text-muted mb-0"><strong>Tareas:</strong> Coordinación general del equipo, definición estratégica del modelo de negocio e integración final de entregables.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="p-4 border rounded bg-light shadow-sm h-100">
+            <span class="badge bg-warning text-dark mb-2">N.L. 9</span>
+            <h5 style="color: #d35400;" class="fw-bold">Emmanuel García Mar</h5>
+            <p class="text-secondary fw-semibold mb-2">Director de Operaciones e Ingeniería (COO)</p>
+            <p class="small text-muted mb-0"><strong>Tareas:</strong> Especificación técnica del hardware "EnerKit" (paneles solares, baterías de litio, focos LED) y diseño Plug & Play.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="p-4 border rounded bg-light shadow-sm h-100">
+            <span class="badge bg-warning text-dark mb-2">N.L. 23</span>
+            <h5 style="color: #d35400;" class="fw-bold">Adrián Ramírez Escalona</h5>
+            <p class="text-secondary fw-semibold mb-2">Director de Finanzas y Sostenibilidad (CFO)</p>
+            <p class="small text-muted mb-0"><strong>Tareas:</strong> Estructuración del esquema de pago PAYG, subsidio cruzado urbano-rural y comercialización de bonos de carbono.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="p-4 border rounded bg-light shadow-sm h-100">
+            <span class="badge bg-warning text-dark mb-2">N.L. 29</span>
+            <h5 style="color: #d35400;" class="fw-bold">Hector Alejandro Vera Pérez</h5>
+            <p class="text-secondary fw-semibold mb-2">Director de Impacto Social (CSO)</p>
+            <p class="small text-muted mb-0"><strong>Tareas:</strong> Gestión del programa "Embajadores de Luz", capacitación de líderes comunitarias y organización del proyecto.</p>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="p-4 border rounded bg-light shadow-sm mx-auto" style="max-width: 600px;">
+            <span class="badge bg-warning text-dark mb-2">N.L. 30</span>
+            <h5 style="color: #d35400;" class="fw-bold">Vhyrkoof Yañez Rojas</h5>
+            <p class="text-secondary fw-semibold mb-2">Director de Tecnología Web y Marketing (CTO)</p>
+            <p class="small text-muted mb-0"><strong>Tareas:</strong> Call Center multilingüe. Diseño de la estructura visual y acomodo sencillo de páginas web utilizando únicamente contenedores, imágenes y textos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="seccion5" class="seccion-contenido tab-pane fade" role="tabpanel" aria-labelledby="tab-seccion5">
+      <h2>5. Contacto y Atención Ciudadana</h2>
+
+      <p class="mb-4">
+        ¿Te interesa adquirir un <strong>EnerKit</strong>, sumarte al programa <em>Embajadores de Luz</em> o recibir asesoría personalizada de nuestro Call Center multilingüe? Déjanos tus datos y nos pondremos en contacto contigo.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-md-7">
+          <div class="form-contacto-caja">
+            <form id="formContacto" onsubmit="enviarFormulario(event)">
+              <div class="mb-3">
+                <label for="contactoNombre" class="form-label">Nombre completo</label>
+                <input type="text" class="form-control" id="contactoNombre" placeholder="Ej. María López Hernández" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="contactoTelefono" class="form-label">Número de teléfono / WhatsApp</label>
+                <input type="tel" class="form-control" id="contactoTelefono" placeholder="Ej. 55 1234 5678" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="contactoCorreo" class="form-label">Correo electrónico</label>
+                <input type="email" class="form-control" id="contactoCorreo" placeholder="Ej. correo@ejemplo.com" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="contactoMotivo" class="form-label">Motivo de contacto</label>
+                <select class="form-select" id="contactoMotivo" required>
+                  <option value="" selected disabled>Selecciona una opción...</option>
+                  <option value="EnerKit Básico">Información sobre EnerKit Básico (Comunidades)</option>
+                  <option value="EnerKit Plus">Adquirir EnerKit Plus (Subsidio cruzado)</option>
+                  <option value="Embajadores">Programa Embajadores de Luz</option>
+                  <option value="Soporte">Soporte técnico / Call Center</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="contactoMensaje" class="form-label">Mensaje o ubicación</label>
+                <textarea class="form-control" id="contactoMensaje" rows="3" placeholder="Cuéntanos sobre tu comunidad o tus dudas..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn-solid theme-primary w-100">Enviar solicitud</button>
+            </form>
+
+            <div id="mensajeConfirmacion" class="alert alert-success mt-3 mb-0 d-none" role="alert">
+              ¡Gracias por contactar a <strong>EnerGente</strong>! Hemos recibido tus datos y nuestro equipo se comunicará contigo pronto.
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <div class="p-4 border rounded bg-light shadow-sm h-100 d-flex flex-column justify-content-between">
+            <div>
+              <h5 style="color: #d35400;" class="fw-bold mb-3">Información Directa</h5>
+              <p class="small mb-2"><strong>Teléfono / Call Center:</strong><br>+52 (55) 8490-2030</p>
+              <p class="small mb-2"><strong>Correo Institucional:</strong><br>contacto@energente-ods7.org.mx</p>
+              <p class="small mb-2"><strong>Sede Central:</strong><br>Ciudad de México, México</p>
+              <p class="small mb-0"><strong>Horario de Atención:</strong><br>Lunes a Viernes de 8:00 a 18:00 hrs</p>
+            </div>
+            <div class="caja-multimedia mt-4 mb-0">
+              <p class="small mb-0" style="color: #d35400;"><strong>Atención Multilingüe</strong><br>Español • Náhuatl • Inglés</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>EnerGente | Proyecto ODS 7 - Agenda 2030</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function enviarFormulario(event) {
+      event.preventDefault();
+      document.getElementById('mensajeConfirmacion').classList.remove('d-none');
+      document.getElementById('formContacto').reset();
+    }
+  </script>
+</body>
+</html>
